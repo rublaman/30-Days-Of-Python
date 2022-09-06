@@ -19,7 +19,12 @@
   Check if int('9.8') is equal to 10
   Writ a script that prompts the user to enter hours and rate per hour. Calculate pay of the person?
   Write a script that prompts the user to enter number of years. Calculate the number of seconds a person can live. Assume a person can live hundred years
-  Write a Python script that displays the following table
+  Write a Python script that displays the following table:
+    1 1 1 1 1
+    2 1 2 4 8
+    3 1 3 9 27
+    4 1 4 16 64
+    5 1 5 25 125
 '''
 # Declare your age as integer variable
 from cmath import sqrt
@@ -59,14 +64,31 @@ print(eucDistance)
 x = -3
 y = (x**2 + 6*x + 9)
 # Find the length of 'python' and 'dragon' and make a falsy comparison statement.
+print(len('python') != len('dragon'))
 # Use and operator to check if 'on' is found in both 'python' and 'dragon'
+print('on' in 'python')
 # I hope this course is not full of jargon. Use in operator to check if jargon is in the sentence.
+print('jargon' in 'I hope this course is not full of jargon')
 # There is no 'on' in both dragon and python
+print('on' in 'dragon' == 'on' in 'python')
 # Find the length of the text python and convert the value to float and convert it to string
+print(str(float(len("python"))))
 # Even numbers are divisible by 2 and the remainder is zero. How do you check if a number is even or not using python?
+print(10 % 2)
 # Check if the floor division of 7 by 3 is equal to the int converted value of 2.7.
+print(7 / 3 == int(2.7))
 # Check if type of '10' is equal to type of 10
+print(type('10') == type(10))
 # Check if int('9.8') is equal to 10
+print(type('9.8') != type(10))
 # Writ a script that prompts the user to enter hours and rate per hour. Calculate pay of the person?
+hours = int(input("number of hours: "))
+rate_hour = int(input("rate per hour: "))
+print(hours * rate_hour)
 # Write a script that prompts the user to enter number of years. Calculate the number of seconds a person can live. Assume a person can live hundred years
+age = int(input("age: "))
+age_seconds = age * 31536000
+hundred_years_seconds = 100 * 31536000
+print(hundred_years_seconds - age_seconds)
 # Write a Python script that displays the following table
+print('1 1 1 1 1\n2 1 2 4 8\n3 1 3 9 27\n4 1 4 16 64\n5 1 5 25 125')
