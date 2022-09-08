@@ -1,8 +1,23 @@
 # Concatenate the string 'Thirty', 'Days', 'Of', 'Python' to a single string, 'Thirty Days Of Python'.
+first_string = 'Thirty'
+second_string = 'Days'
+third_string = 'Of'
+fourth_string = 'Python'
+space = ' '
+full_string = first_string + space + second_string + \
+    space + third_string + space + fourth_string
 # Concatenate the string 'Coding', 'For' , 'All' to a single string, 'Coding For All'.
+coding_string = 'Coding'
+for_string = 'For'
+all_string = 'All'
+space = ' '
+full_string = coding_string + space + for_string + space + all_string
 # Declare a variable named company and assign it to an initial value "Coding For All".
+company = full_string
 # Print the variable company using print().
+print(company)
 # Print the length of the company string using len() method and print().
+print(len(company))
 # Change all the characters to uppercase letters using upper() method.
 # Change all the characters to lowercase letters using lower() method.
 # Use capitalize(), title(), swapcase() methods to format the value of the string Coding For All.
