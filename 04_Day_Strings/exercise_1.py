@@ -1,7 +1,7 @@
 # Concatenate the string 'Thirty', 'Days', 'Of', 'Python' to a single string, 'Thirty Days Of Python'.
-first_string = 'Thirty'
 second_string = 'Days'
 third_string = 'Of'
+first_string = 'Thirty'
 fourth_string = 'Python'
 space = ' '
 full_string = first_string + space + second_string + \
@@ -30,7 +30,6 @@ print(company.swapcase())
 print(company[:6])
 # Check if Coding For All string contains a word Coding using the method index, find or other methods.
 print(company.index('Coding'))
-
 if 'Coding' in company:
     print('True')
 # Replace the word coding in the string 'Coding For All' to Python.
@@ -63,25 +62,36 @@ print(sentence.index('because'))
 # Use rindex to find the position of the last occurrence of the word because in the following sentence: 'You cannot end a sentence with because because because is a conjunction'
 print(sentence.rindex('because'))
 # Slice out the phrase 'because because because' in the following sentence: 'You cannot end a sentence with because because because is a conjunction'
+print(sentence[sentence.index('because'):sentence.rindex('because') + 7])
 # Find the position of the first occurrence of the word 'because' in the following sentence: 'You cannot end a sentence with because because because is a conjunction'
-# Slice out the phrase 'because because because' in the following sentence: 'You cannot end a sentence with because because because is a conjunction'
+print(sentence.index('because'))
 # Does ''Coding For All' start with a substring Coding?
-# Does 'Coding For All' end with a substring coding?
+sentence = "'Coding For All"
+print(sentence.startswith('Coding'))
 # '   Coding For All      '  , remove the left and right trailing spaces in the given string.
+print("   Coding For All      ".rstrip().strip())
 # Which one of the following variables return True when we use the method isidentifier():
 #   30DaysOfPython
 #   thirty_days_of_python
+print('30DaysOfPython'.isidentifier())
+print('thirty_days_of_python'.isidentifier())
 # The following list contains the names of some of python libraries: ['Django', 'Flask', 'Bottle', 'Pyramid', 'Falcon']. Join the list with a hash with space string.
+list_libraries = ['Django', 'Flask', 'Bottle', 'Pyramid', 'Falcon']
+print(' # '.join(list_libraries))
 # Use the new line escape sequence to separate the following sentences.
 #   I am enjoying this challenge.
 #   I just wonder what is next.
+print('I am enjoying this challenge.\nI just wonder what is next.')
 # Use a tab escape sequence to write the following lines
 #   Name      Age     Country   City
-#   Asabeneh  250     Finland   Helsinki
+#   Ruben     29      Spain     Leon
+print('Name\tAge\tCountry\tCity\nRuben\t29\tSpai\tLeon')
 # Use the string formatting method to display the following:
-#   radius = 10
-#   area = 3.14 * radius ** 2
-#   The area of a circle with radius 10 is 314 meters square.
+radius = 10
+area = 3.14 * radius ** 2
+result = 'The area of a circle with radius {} is {}'.format(
+    str(radius), str(area))
+print(result)
 # Make the following using string formatting methods:
 #   8 + 6 = 14
 #   8 - 6 = 2
@@ -90,3 +100,11 @@ print(sentence.rindex('because'))
 #   8 % 6 = 2
 #   8 // 6 = 1
 #   8 ** 6 = 262144
+
+print('{} + {} = {}'.format(8, 6, 8 + 6))
+print('{} - {} = {}'.format(8, 6, 8 - 2))
+print('{} * {} = {}'.format(8, 6, 8 * 6))
+print('{} / {} = {:.2f}'.format(8, 6, 8 / 6))
+print(f'{8} % {6} = {8 % 6}')
+print(f'{8} // {6} = {8 // 6}')
+print(f'{8} ** {6} = {8 ** 6}')
