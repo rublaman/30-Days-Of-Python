@@ -1,4 +1,4 @@
-[
+contries_data = [
     {
         "name": "Afghanistan",
         "capital": "Kabul",
