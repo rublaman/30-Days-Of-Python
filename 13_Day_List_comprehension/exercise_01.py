@@ -4,11 +4,13 @@ negative_and_zero = [i for i in numbers if i <= 0]
 
 print(negative_and_zero)
 # Flatten the following list of lists of lists to a one dimensional list:
-
-list_of_lists = [[[1, 2, 3]], [[4, 5, 6]], [[7, 8, 9]]]
-
 # output
 # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+list_of_lists = [[[1, 2, 3]], [[4, 5, 6]], [[7, 8, 9]]]
+flat_list = [number for row in list_of_lists for number in row[0]]
+print(flat_list)
+
+
 # Using list comprehension create the following list of tuples:
 
 # [(0, 1, 0, 0, 0, 0, 0),
@@ -22,13 +24,25 @@ list_of_lists = [[[1, 2, 3]], [[4, 5, 6]], [[7, 8, 9]]]
 #  (8, 1, 8, 64, 512, 4096, 32768),
 #  (9, 1, 9, 81, 729, 6561, 59049),
 #  (10, 1, 10, 100, 1000, 10000, 100000)]
-# # Flatten the following list to a new list:
 
-# countries = [[('Finland', 'Helsinki')], [
-#     ('Sweden', 'Stockholm')], [('Norway', 'Oslo')]]
+res_tuple = [(i, 1, i, i**2, i**3, i**4, i**5) for i in range(11)]
+print(res_tuple)
+
+
+# Flatten the following list to a new list:
+
+countries = [[('Finland', 'Helsinki')], [
+    ('Sweden', 'Stockholm')], [('Norway', 'Oslo')]]
 # # output:
 # # [['FINLAND', 'FIN', 'HELSINKI'], ['SWEDEN', 'SWE',
 # #                                   'STOCKHOLM'], ['NORWAY', 'NOR', 'OSLO']]
+# res_contries = [list(country) for group in countries for country in group]
+# print(res_contries)
+
+res_contries = [[country[0], country[0][:3], country[1]]
+                for group in countries for country in group]
+print(res_contries)
+
 # # Change the following list to a list of dictionaries:
 
 # countries = [[('Finland', 'Helsinki')], [
@@ -43,4 +57,5 @@ list_of_lists = [[[1, 2, 3]], [[4, 5, 6]], [[7, 8, 9]]]
 #          [('Donald', 'Trump')], [('Bill', 'Gates')]]
 # # output
 # # ['Asabeneh Yetaeyeh', 'David Smith', 'Donald Trump', 'Bill Gates']
+
 # # Write a lambda function which can solve a slope or y-intercept of linear functions.
