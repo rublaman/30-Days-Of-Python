@@ -1,4 +1,7 @@
 # Filter only negative and zero in the list using list comprehension
+from itertools import count
+
+
 numbers = [-4, -3, -2, -1, 0, 2, 4, 6]
 negative_and_zero = [i for i in numbers if i <= 0]
 
@@ -39,23 +42,27 @@ countries = [[('Finland', 'Helsinki')], [
 # res_contries = [list(country) for group in countries for country in group]
 # print(res_contries)
 
-res_contries = [[country[0], country[0][:3], country[1]]
-                for group in countries for country in group]
-print(res_contries)
+res_countries = [[country[0], country[0][:3], country[1]]
+                 for group in countries for country in group]
+print(res_countries)
 
 # # Change the following list to a list of dictionaries:
 
-# countries = [[('Finland', 'Helsinki')], [
-#     ('Sweden', 'Stockholm')], [('Norway', 'Oslo')]]
+countries = [[('Finland', 'Helsinki')], [
+    ('Sweden', 'Stockholm')], [('Norway', 'Oslo')]]
 # # output:
 # # [{'country': 'FINLAND', 'city': 'HELSINKI'},
 # #  {'country': 'SWEDEN', 'city': 'STOCKHOLM'},
 # #  {'country': 'NORWAY', 'city': 'OSLO'}]
-# # Change the following list of lists to a list of concatenated strings:
+res_dict = [dict(zip(('country', 'city'), group[0])) for group in countries]
+print(res_dict)
 
-# names = [[('Asabeneh', 'Yetayeh')], [('David', 'Smith')],
-#          [('Donald', 'Trump')], [('Bill', 'Gates')]]
-# # output
-# # ['Asabeneh Yetaeyeh', 'David Smith', 'Donald Trump', 'Bill Gates']
+
+# # Change the following list of lists to a list of concatenated strings:
+names = [[('Asabeneh', 'Yetayeh')], [('David', 'Smith')],
+         [('Donald', 'Trump')], [('Bill', 'Gates')]]
+# # output# # ['Asabeneh Yetaeyeh', 'David Smith', 'Donald Trump', 'Bill Gates']
+res_names = [word[0] + " " + word[1] for group in names for word in group]
+print(res_names)
 
 # # Write a lambda function which can solve a slope or y-intercept of linear functions.
