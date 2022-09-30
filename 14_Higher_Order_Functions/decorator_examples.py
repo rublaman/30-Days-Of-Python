@@ -84,3 +84,61 @@ def say_whee():
 
 
 say_whee()
+
+'''
+DECORATING FUNCTIONS WITH ARGUMENTS
+The problem is that the inner function wrapper_do_twice() does not take any arguments, 
+but name="World" was passed to it. You could fix this by letting wrapper_do_twice() 
+accept one argument, but then it would not work for the say_whee() function you created 
+earlier.
+
+The solution is to use *args and **kwargs in the inner wrapper function. Then it will 
+accept an arbitrary number of positional and keyword arguments.
+'''
+
+
+@do_twice
+def greet(name):
+    print(f"Hello {name}")
+
+
+greet('Ruben')
+
+'''
+RETURNING VALUES FROM DECORATED FUNCTIONS
+What happens to the return value of decorated functions? Well, that's up to the decorator t
+o decide.
+
+>>> hi_adam = return_greeting("Adam")
+Creating greeting
+Creating greeting
+>>> print(hi_adam)
+None
+
+Oops, your decorator ate the return value from the function. Because the do_twice_wrapper() 
+doesn't explicitly return a value, the call return_greeting("Adam") ended up returning None.
+To fix this, you need to make sure the wrapper function returns the return value of the 
+decorated function. 
+
+def do_twice(func):
+    def wrapper_do_twice(*args, **kwargs):
+        func(*args, **kwargs)
+        return func(*args, **kwargs)
+    return wrapper_do_twice
+    
+The return value from the last execution of the function is returned:
+>>> return_greeting("Adam")
+Creating greeting
+Creating greeting
+'Hi Adam'
+'''
+
+
+@do_twice
+def return_greeting(name):
+    print("Creating greeting")
+    return f"Hi {name}"
+
+
+hi_ruben = return_greeting('Ruben')
+print(hi_ruben)
