@@ -142,3 +142,28 @@ def return_greeting(name):
 
 hi_ruben = return_greeting('Ruben')
 print(hi_ruben)
+
+'''
+WHO ARE YOU, REALLY??
+. Introspection is the ability of an object to know about its own attributes at runtime. For instance,
+a function knows its own name and documentation. The introspection works for functions you define yourself 
+as well. However, after being decorated, say_whee() has gotten very confused about its identity. It now 
+reports being the wrapper_do_twice() inner function inside the do_twice() decorator. Although technically 
+true, this is not very useful information.
+
+To fix this, decorators should use the @functools.wraps decorator, which will preserve information about 
+the original function.
+
+import functools
+
+def do_twice(func):
+    @functools.wraps(func)
+    def wrapper_do_twice(*args, **kwargs):
+        func(*args, **kwargs)
+        return func(*args, **kwargs)
+    return wrapper_do_twice
+'''
+
+print(say_whee)
+print(say_whee.__name__)
+print(help(say_whee))
