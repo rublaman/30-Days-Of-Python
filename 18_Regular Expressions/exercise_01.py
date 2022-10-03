@@ -29,15 +29,28 @@ output:
     ]
 '''
 
+import re
+from collections import Counter
+from turtle import distance
+
 paragraph = 'I love teaching. If you do not love teaching what else can you love. I love Python if you do not love something which can give you all the capabilities to develop an application what else can you love.'
 
-'''
-The position of some particles on the horizontal x-axis are -12, -4, -3 and -1 
+matches = re.findall(r'[A-Za-z]+', paragraph)
+print(Counter(matches))
+
+
+paragrah_two = '''The position of some particles on the horizontal x-axis are -12, -4, -3 and -1 
 in the negative direction, 0 at origin, 4 and 8 in the positive direction. Extract 
 these numbers from this whole text and find the distance between the two furthest 
-particles.
-'''
+particles.'''
 
-points = ['-1', '2', '-4', '-3', '-1', '0', '4', '8']
-sorted_points = [-4, -3, -1, -1, 0, 2, 4, 8]
-distance = 8 - (-4)  # 12
+
+points = re.findall(r'[-]\d+|\d+', paragrah_two)
+point_int = [int(i) for i in points]
+point_distance = point_int[-1] - point_int[0]
+print(point_distance)
+
+
+# points = ['-1', '2', '-4', '-3', '-1', '0', '4', '8']
+# sorted_points = [-4, -3, -1, -1, 0, 2, 4, 8]
+# distance = 8 - (-4)  # 12
