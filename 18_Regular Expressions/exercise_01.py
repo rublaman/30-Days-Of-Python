@@ -36,7 +36,8 @@ from turtle import distance
 paragraph = 'I love teaching. If you do not love teaching what else can you love. I love Python if you do not love something which can give you all the capabilities to develop an application what else can you love.'
 
 matches = re.findall(r'[A-Za-z]+', paragraph)
-print(Counter(matches))
+w_counter = Counter(matches)
+print(w_counter)
 
 
 paragrah_two = '''The position of some particles on the horizontal x-axis are -12, -4, -3 and -1 
