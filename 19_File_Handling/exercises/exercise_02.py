@@ -2,8 +2,8 @@
 from collections import Counter
 from difflib import SequenceMatcher
 import re
-import string
-from tabnanny import check
+import csv
+
 
 '''
 Extract all incoming email addresses as a list from the email_exchange_big.txt file.
@@ -119,3 +119,26 @@ Read the hacker news csv file and find out:
     b) Count the number lines containing JavaScript, javascript or Javascript
     c) Count the number lines containing Java and not JavaScript
 '''
+
+
+def findWholeWord(w, cadena):
+    return re.compile(r'\b({0})\b'.format(w), flags=re.IGNORECASE).search(cadena)
+
+
+def count_number_words_csv(word: str, path: str):
+    with open(path) as f:
+        csv_reader = csv.reader(f, delimiter=',')
+        count = 0
+
+        for row in csv_reader:
+            for e in row:
+                if findWholeWord(word, e) is not None:
+                    count += 1
+                    continue
+
+    return count
+
+
+print(count_number_words_csv('python', '../../data/hacker_news.csv'))
+print(count_number_words_csv('JavaScript', '../../data/hacker_news.csv'))
+print(count_number_words_csv('java', '../../data/hacker_news.csv'))
