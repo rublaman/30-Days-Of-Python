@@ -122,7 +122,10 @@ Read the hacker news csv file and find out:
 
 
 def findWholeWord(w, cadena):
-    return re.compile(r'\b({0})\b'.format(w), flags=re.IGNORECASE).search(cadena)
+    # OPTION 1
+    # return re.compile(r'\b({0})\b'.format(w), flags=re.IGNORECASE).search(cadena)
+    # OPTION 2
+    return re.search(r'\b({0})\b'.format(w), cadena, flags=re.IGNORECASE)
 
 
 def count_number_words_csv(word: str, path: str):
@@ -139,6 +142,6 @@ def count_number_words_csv(word: str, path: str):
     return count
 
 
-print(count_number_words_csv('python', '../../data/hacker_news.csv'))
+print(count_number_words_csv('Python', '../../data/hacker_news.csv'))
 print(count_number_words_csv('JavaScript', '../../data/hacker_news.csv'))
 print(count_number_words_csv('java', '../../data/hacker_news.csv'))
