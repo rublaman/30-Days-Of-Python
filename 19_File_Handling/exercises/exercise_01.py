@@ -15,14 +15,15 @@ def number_lines_words(path: str):
         lines = len(f.readlines())
         f.seek(0)
         txt = f.read()
-
-        print(txt)
         number_words = len(re.findall(r'[A-Za-z]+', txt))
 
     return (f'Number of lines: {lines} and number of words: {number_words}')
 
 
 print(number_lines_words('../../data/obama_speech.txt'))
+print(number_lines_words('../../data/michelle_obama_speech.txt'))
+print(number_lines_words('../../data/donald_speech.txt'))
+print(number_lines_words('../../data/melina_trump_speech.txt'))
 
 '''
 Read the countries_data.json data file in data directory, create a function that finds the ten most spoken languages
