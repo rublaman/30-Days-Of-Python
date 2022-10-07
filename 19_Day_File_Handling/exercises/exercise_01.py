@@ -1,15 +1,15 @@
 '''
-Write a function which count number of lines and number of words in a text. All the files are in the data the folder: 
-    a) Read obama_speech.txt file and count number of lines and words 
-    b) Read michelle_obama_speech.txt file and count number of lines and words 
-    c) Read donald_speech.txt file and count number of lines and words 
+Write a function which count number of lines and number of words in a text. All the files are in the data the folder:
+    a) Read obama_speech.txt file and count number of lines and words
+    b) Read michelle_obama_speech.txt file and count number of lines and words
+    c) Read donald_speech.txt file and count number of lines and words
     d) Read melina_trump_speech.txt file and count number of lines and words
 '''
 
 
 import json
 import re
-from ssl import DefaultVerifyPaths
+from collections import Counter
 
 
 def number_lines_words(path: str):
@@ -53,13 +53,19 @@ print(most_spoken_languages(filename='./data/countries_data.json', 10))
 '''
 
 
-def most_spoken_languages(path: str):
+def most_spoken_languages(path: str, num: int):
     f = open(path, encoding="utf8")
     data = json.load(f)
-    print(data)
+    lang = []
+    for country in data:
+        for language in country['languages']:
+            lang.append(language)
+
+    a_counter = Counter(lang)
+    return a_counter.most_common(num)
 
 
-most_spoken_languages('../../data/countries_data.json')
+print(most_spoken_languages('../../data/countries_data.json', 3))
 
 
 '''
@@ -90,3 +96,22 @@ print(most_populated_countries(filename='./data/countries_data.json', 10))
     {'country': 'United States of America', 'population': 323947000}
     ]
 '''
+
+
+def most_populated_countries(path: str, num: int):
+    f = open(path, encoding="utf8")
+    data = json.load(f)
+
+    populated = {}
+    for country in data:
+        populated[country['name']] = country['population']
+
+    print(populated)
+
+    populated = sorted(populated.items(), key=lambda x: x[1], reverse=True)
+    sortdict = dict(populated)
+
+    return dict(list(sortdict.items())[:num])
+
+
+print(most_populated_countries('../../data/countries_data.json', 3))
