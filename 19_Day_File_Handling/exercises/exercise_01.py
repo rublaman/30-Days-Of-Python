@@ -7,7 +7,9 @@ Write a function which count number of lines and number of words in a text. All 
 '''
 
 
+import json
 import re
+from ssl import DefaultVerifyPaths
 
 
 def number_lines_words(path: str):
@@ -49,6 +51,15 @@ print(most_spoken_languages(filename='./data/countries_data.json', 10))
     (25, 'Arabic')]
 
 '''
+
+
+def most_spoken_languages(path: str):
+    f = open(path, encoding="utf8")
+    data = json.load(f)
+    print(data)
+
+
+most_spoken_languages('../../data/countries_data.json')
 
 
 '''
