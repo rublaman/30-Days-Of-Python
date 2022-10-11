@@ -3,9 +3,10 @@
 '''
 
 import pprint
-import json
+from statistics import median
 import requests
 from collections import Counter
+import numpy as np
 
 # url = 'http://www.gutenberg.org/files/1112/1112.txt'
 
@@ -22,21 +23,24 @@ from collections import Counter
     Create a frequency table of country and breed of cats
 '''
 
-url_cat = 'https://api.thecatapi.com/v1/breeds'
-response_cat = requests.get(url_cat)
-cats_res_json = response_cat.json()
 
-weights = []
-cleaned = []
+def get_weights(url):
+    response_cat = requests.get(url)
+    cats_res_json = response_cat.json()
 
-for cat in cats_res_json:
-    weights.append(cat['weight']['metric'])
+    weights = []
+    cleaned = []
 
-aux = list([s.replace(' - ', '') for s in weights])
-cleaned = list(int(e[1:]) - int(e[0]) for e in aux)
+    for cat in cats_res_json:
+        weights.append(cat['weight']['metric'])
+
+    aux = list([s.replace(' - ', '') for s in weights])
+    cleaned = list(int(e[1:]) - int(e[0]) for e in aux)
+
+    print(f'Min: {min(cleaned)}\nMax: {max(cleaned)}\nMedian: {median(cleaned)}\nStandard deviation: {np.std(cleaned)}')
 
 
-print(cleaned)
+get_weights('https://api.thecatapi.com/v1/breeds')
 
 
 '''
