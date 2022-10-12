@@ -31,16 +31,28 @@ def get_weights(url):
     weights = []
     cleaned = []
 
-    for cat in cats_res_json:
-        weights.append(cat['weight']['metric'])
-
+    weights = list(cat['weight']['metric'] for cat in cats_res_json)
     aux = list([s.replace(' - ', '') for s in weights])
     cleaned = list(int(e[1:]) - int(e[0]) for e in aux)
 
     print(f'Min: {min(cleaned)}\nMax: {max(cleaned)}\nMedian: {median(cleaned)}\nStandard deviation: {np.std(cleaned)}')
 
 
-get_weights('https://api.thecatapi.com/v1/breeds')
+# get_weights('https://api.thecatapi.com/v1/breeds')
+
+
+def get_life_span(url):
+    response_cat = requests.get(url)
+    cats_res_json = response_cat.json()
+
+    life_span = list(cat['life_span'] for cat in cats_res_json)
+    cleaned = list([(int(e[e.find('-') + 2:]) +
+                   int(e[0:e.find('-'):])) / 2 for e in life_span])
+
+    print(f'Min: {min(cleaned)}\nMax: {max(cleaned)}\nMedian: {median(cleaned)}\nStandard deviation: {np.std(cleaned)}')
+
+
+get_life_span('https://api.thecatapi.com/v1/breeds')
 
 
 '''
