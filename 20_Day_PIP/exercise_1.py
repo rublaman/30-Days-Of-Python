@@ -52,7 +52,7 @@ def get_life_span(url):
     print(f'Min: {min(cleaned)}\nMax: {max(cleaned)}\nMedian: {median(cleaned)}\nStandard deviation: {np.std(cleaned)}')
 
 
-get_life_span('https://api.thecatapi.com/v1/breeds')
+# get_life_span('https://api.thecatapi.com/v1/breeds')
 
 
 '''
@@ -61,6 +61,43 @@ the 10 largest countries
 the 10 most spoken languages
 the total number of languages in the countries API
 '''
+
+
+def get_largest_countries(url):
+    response_cat = requests.get(url)
+    res_countries = response_cat.json()
+
+    populated = {}
+    for country in res_countries:
+        populated[country['name']['common']] = country['population']
+
+    populated = sorted(populated.items(), key=lambda x: x[1], reverse=True)
+    sortdict = dict(populated)
+
+    print(list(sortdict.items())[:10])
+
+
+# get_largest_countries('https://restcountries.com/v3.1/all')
+
+
+def get_top_languages(url):
+    response_cat = requests.get(url)
+    res_countries = response_cat.json()
+    lang = []
+
+    for country in res_countries:
+        if 'languages' in country:
+            pprint.pprint(country['languages'])
+            for language in country['languages']:
+                print(language)
+                lang.append(language)
+
+    a_counter = Counter(lang)
+    print(a_counter.most_common(10))
+
+
+get_top_languages('https://restcountries.com/v3.1/all')
+
 
 '''
 4. UCI is one of the most common places to get data sets for data science and machine learning.
