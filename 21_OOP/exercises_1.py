@@ -7,10 +7,23 @@ distribution of the sample. You can create a class called Statistics and create 
 statistical calculations as methods for the Statistics class. Check the output below.
 '''
 
+
+class Statistics:
+    def __init__(self, list_number) -> None:
+        self.list_number = list_number
+
+    def mean(self) -> float:
+        return sum(self.list_number) / len(self.list_number)
+
+
+ages = [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24,
+        32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26]
+
+data = Statistics(ages)
+print(data.mean())
+
 '''
 OUTPUT
-
-ages = [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26]
 
 print('Count:', data.count()) # 25
 print('Sum: ', data.sum()) # 744
