@@ -15,12 +15,45 @@ class Statistics:
     def mean(self) -> float:
         return sum(self.list_number) / len(self.list_number)
 
+    def median(self) -> float:
+        sorted_items = sorted(self.list_number)
+        return sorted_items[(len(sorted_items)) // 2]
+
+    def mode(self) -> float:
+        return max(set(self.list_number), key=self.list_number.count)
+
+    def range(self) -> float:
+        pass
+
+    def variance(self) -> float:
+        pass
+
+    def std_deviation(self) -> float:
+        pass
+
+    def min(self) -> float:
+        pass
+
+    def max(self) -> float:
+        pass
+
+    def count(self) -> float:
+        pass
+
+    def percentile(self) -> float:
+        pass
+
+    def frequency(self) -> float:
+        pass
+
 
 ages = [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24,
         32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26]
 
 data = Statistics(ages)
 print(data.mean())
+print(data.median())
+print(data.mode())
 
 '''
 OUTPUT
