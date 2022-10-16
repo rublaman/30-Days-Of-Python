@@ -7,26 +7,29 @@ methods. Incomes is a set of incomes and its description. The same goes for expe
 
 class PersonAccount:
 
-    def __init__(self, first_name, last_name, incomes, expenses_properties) -> None:
+    def __init__(self, first_name, last_name, balance) -> None:
         self.first_name = first_name
         self.last_name = last_name
-        self.incomes = incomes
-        self.expenses_properties = expenses_properties
+        self.__balance = balance
+        self.__incomes = []
+        self.__expenses = []
 
-        def total_income() -> float:
-            pass
+    def total_income(self) -> float:
+        return sum(self.__incomes)
 
-        def total_expense() -> float:
-            pass
+    def total_expense(self) -> float:
+        return sum(self.__expenses)
 
-        def account_info() -> str:
-            pass
+    def account_info(self) -> str:
+        return f'{self.first_name} {self.last_name} has {self.balance}€'
 
-        def add_income(income: float):
-            pass
+    def add_income(self, income: float) -> None:
+        self.__balance += income
+        self.__incomes.append(income)
 
-        def add_expense(expense: float):
-            pass
+    def add_expense(self, expense: float) -> None:
+        self.__balance -= expense
+        self.__expenses.append(expense)
 
-        def account_balance() -> str:
-            pass
+    def account_balance(self) -> str:
+        return f'The balance is {self.total_income - self.total_expense}'
