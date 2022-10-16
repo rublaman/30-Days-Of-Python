@@ -9,6 +9,9 @@ statistical calculations as methods for the Statistics class. Check the output b
 
 
 class Statistics:
+
+    import math
+
     def __init__(self, list_number) -> None:
         self.list_number = list_number
 
@@ -23,28 +26,34 @@ class Statistics:
         return max(set(self.list_number), key=self.list_number.count)
 
     def range(self) -> float:
-        pass
+        return max(self.list_number) - min(self.list_number)
 
     def variance(self) -> float:
-        pass
+        mean = self.mean()
+        return sum((x-mean)**2 for x in self.list_number) / \
+            len(self.list_number)
 
     def std_deviation(self) -> float:
-        pass
+        return self.math.sqrt(self.variance())
 
     def min(self) -> float:
-        pass
+        return min(self.list_number)
 
     def max(self) -> float:
-        pass
+        return max(self.list_number)
 
     def count(self) -> float:
-        pass
-
-    def percentile(self) -> float:
-        pass
+        return len(self.list_number)
 
     def frequency(self) -> float:
-        pass
+        res = {}
+        for i in self.list_number:
+            if res.get(i):
+                res[i] += 1
+            else:
+                res[i] = 1
+
+        return res
 
 
 ages = [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24,
@@ -54,6 +63,12 @@ data = Statistics(ages)
 print(data.mean())
 print(data.median())
 print(data.mode())
+print(data.frequency())
+print(data.max())
+print(data.min())
+print(data.range())
+print(data.variance())
+print(data.std_deviation())
 
 '''
 OUTPUT
