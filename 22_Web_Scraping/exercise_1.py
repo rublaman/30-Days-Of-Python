@@ -28,4 +28,5 @@ for section in sections:
             res['Categories'][categories[1]] = categories[2]
     list_scraping.append(res)
 
-pprint.pprint(list_scraping)
+with open("./mydata.json", "w") as final:
+    json.dump(list_scraping, final)
