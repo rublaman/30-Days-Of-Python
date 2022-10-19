@@ -18,9 +18,19 @@ tables = soup.find_all('table', {'cellpadding': '3'})
 
 table = tables[0]
 
+list_scraping = []
+
 for tr in table.find_all("tr"):
-    print(tr.text.replace(u'\xa0', u' ').split('\n'))
-    print('###')
+    res = tr.text.replace(u'\xa0', u' ').split('\n')
+    if len(res) == 11:
+        res_dict = {'Name': res[1], 'Data Types': res[3],
+                    'Default Task': res[4], 'Attribute Types': res[5],
+                    'Instances': res[6], 'Attributes': res[7], 'Year': res[8]}
+        list_scraping.append(res_dict)
+
+with open("./datasets.json", "w") as final:
+    json.dump(list_scraping, final)
+
 
 # for row in table.find_all('tr'):
 #     # Find all data for each column
