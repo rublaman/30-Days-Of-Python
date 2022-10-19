@@ -20,3 +20,14 @@ table = tables[0]
 
 for tr in table.find_all("tr"):
     print(tr.text.replace(u'\xa0', u' ').split('\n'))
+    print('###')
+
+# for row in table.find_all('tr'):
+#     # Find all data for each column
+#     columns = row.find_all('td')
+#     print(columns[0].text)
+
+# for row in table.find_all('tr'):
+#     value = row.find_all('td')
+#     beautified_value = [ele.text.strip() for ele in value]
+#     print(beautified_value)
