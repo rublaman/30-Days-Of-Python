@@ -12,3 +12,8 @@ res = requests.get(url)
 content = res.content
 status = res.status_code
 print(status)
+
+soup = BeautifulSoup(content, 'html.parser')
+table = soup.find_all('table', {'class': 'wikitable'})
+
+#
