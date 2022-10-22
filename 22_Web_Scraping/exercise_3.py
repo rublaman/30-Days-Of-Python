@@ -14,6 +14,16 @@ status = res.status_code
 print(status)
 
 soup = BeautifulSoup(content, 'html.parser')
-table = soup.find_all('table', {'class': 'wikitable'})
+table = soup.find('table', {'class': 'wikitable'})
+table_body = table.find('tbody')
 
-#
+list_scraping = []
+
+for tr in table_body.find_all("tr")[1:]:
+    res = tr.text.replace(u'\xa0', u' ').split('\n')
+    res_dict = {'No': res[1], 'Name': res[5],
+                'Term': res[7], 'Party': res[11], 'Election': res[13], 'VicePresident': res[15]}
+    list_scraping.append(res_dict)
+
+with open("./presidents.json", "w") as final:
+    json.dump(list_scraping, final)
