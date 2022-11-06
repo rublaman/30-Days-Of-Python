@@ -8,3 +8,10 @@
   Filter the titles which contain JavaScript
   Explore the data and make sense of it
 '''
+
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv('../data/hacker_news.csv')
+print(df.head(5))  # Get the first five rows
+print(df.tail(5))  # Get the last five rows
