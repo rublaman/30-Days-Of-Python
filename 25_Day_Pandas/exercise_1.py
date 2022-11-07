@@ -18,3 +18,7 @@ df.tail(5)              # Get the last five rows
 title = df['title']     # Get the title column as pandas series
 len(df.columns)         # Count the number of columns
 len(df)                 # Count the number of rows
+# Filter the titles which contain JavaScript
+df[df['title'].str.contains("JavaScript")]
+# Filter the titles which contain Python
+df[df['title'].str.contains("python")]
