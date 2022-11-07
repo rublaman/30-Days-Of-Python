@@ -16,5 +16,5 @@ df = pd.read_csv('../data/hacker_news.csv')
 df.head(5)              # Get the first five rows
 df.tail(5)              # Get the last five rows
 title = df['title']     # Get the title column as pandas series
-print(len(df.columns))  # Count the number of columns
-print(len(df))          # Count the number of rows
+len(df.columns)         # Count the number of columns
+len(df)                 # Count the number of rows
