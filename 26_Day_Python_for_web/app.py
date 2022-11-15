@@ -1,5 +1,4 @@
 # let's import the flask
-
 from flask import Flask, render_template
 import os  # importing operating system module
 
@@ -8,12 +7,12 @@ app = Flask(__name__)
 
 @app.route('/')  # this decorator create the home route
 def home():
-    return render_template('./templates/home.html')
+    return render_template('home.html')
 
 
 @app.route('/about')
 def about():
-    return render_template('./templates/about.html')
+    return '<h1>About us</h1>'
 
 
 if __name__ == '__main__':
